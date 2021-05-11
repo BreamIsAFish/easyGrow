@@ -1,19 +1,20 @@
-#include <MicroGear.h>
+//#include <MicroGear.h>
+#include <PubSubClient.h>
 #include <ESP8266WiFi.h>
 
 const char* ssid     = "dseprivate";
 const char* password = "fugvlvugoH9[kpot0tU";
 
-//#define APPID   "e97157c7-82cb-47af-818f-a51a7ea9412d"
+//#define APPID   "EasyGrow"
 //#define KEY     "iNjQcUqzU7KkYZooRa2pgdxXwCLRjV46"
 //#define SECRET  "jNC8SZNJIMe$7~*RAby)J!jVTNb4MrBm"
 
-//#define ALIAS   "NodeMCU1"
+//#define ALIAS   "NodeMCU"
 //#define TargetWeb "HTML_web"
 
-//WiFiClient client;
+WiFiClient client;
 //MicroGear microgear(client);
-
+//
 //void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) 
 //{
 //    Serial.print("Incoming message --> ");
@@ -54,6 +55,8 @@ void setup()
 
 void loop() 
 {
+    Serial.println("serial");
+    delay(1000);
 //    if (microgear.connected())
 //    {
 //       microgear.loop();
@@ -71,5 +74,5 @@ void loop()
 //    Serial.println("connection lost, reconnect...");
 //    microgear.connect(APPID);
 //   }
-//    delay(1500);
+    delay(1500);
 }
