@@ -2006,3 +2006,95 @@
 2021-05-15 12:39:01,198 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 5173mS.
 2021-05-15 12:39:01,198 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
 2021-05-15 12:39:01,198 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-05-15 16:30:39,405 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:30:39,593 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:30:39,985 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:30:40,048 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:30:43,868 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 912641928 Bytes (1073741824)
+2021-05-15 16:30:46,928 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 922754056 Bytes (1073741824)
+2021-05-15 16:30:51,718 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 444764376 Bytes (1073741824)
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: ADC
+2021-05-15 16:30:52,209 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-05-15 16:30:52,225 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-05-15 16:30:52,756 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\license.tmp_save
+2021-05-15 16:30:52,961 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\license.tmp
+2021-05-15 16:30:53,070 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\gpio.tmp_save
+2021-05-15 16:30:53,211 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\gpio.tmp
+2021-05-15 16:30:53,648 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-05-15 16:30:53,664 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-05-15 16:30:53,711 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_it.c_save
+2021-05-15 16:30:54,026 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_it.c
+2021-05-15 16:30:54,041 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_it.h_save
+2021-05-15 16:30:54,165 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_it.h
+2021-05-15 16:30:54,228 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_hal_msp.c_save
+2021-05-15 16:30:55,370 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_hal_msp.c
+2021-05-15 16:30:55,386 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\system.tmp_save
+2021-05-15 16:30:55,495 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\system.tmp
+2021-05-15 16:30:55,667 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_hal_conf.h_save
+2021-05-15 16:30:55,839 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_hal_conf.h
+2021-05-15 16:30:56,060 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Inc\main.h_save
+2021-05-15 16:30:56,200 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Inc\main.h
+2021-05-15 16:30:56,247 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Src\main.c_save
+2021-05-15 16:30:56,466 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Src\main.c
+2021-05-15 16:30:59,000 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 343mS.
+2021-05-15 16:30:59,016 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-05-15 16:30:59,612 [INFO] ConfigFileManager:1238 - The Die is : DIE431
+2021-05-15 16:31:03,461 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 4445mS.
+2021-05-15 16:31:03,461 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-05-15 16:31:03,461 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-05-15 16:33:12,590 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:33:12,637 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:33:12,702 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:33:12,764 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:33:12,874 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:33:12,921 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:33:19,604 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 601107016 Bytes (1073741824)
+2021-05-15 16:33:21,671 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 611592776 Bytes (1073741824)
+2021-05-15 16:33:28,451 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 733227592 Bytes (1073741824)
+2021-05-15 16:33:28,878 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: NVIC
+2021-05-15 16:33:28,878 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-05-15 16:33:28,878 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: USART
+2021-05-15 16:33:28,894 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: SYS
+2021-05-15 16:33:28,894 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: GPIO
+2021-05-15 16:33:28,894 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: ADC
+2021-05-15 16:33:28,894 [INFO] BlockDiagram:2735 - set Specific Code input for plugin: RCC
+2021-05-15 16:33:28,894 [INFO] CodeGenerator:639 - code generatio: config db path: C:\ST\STM32CubeIDE_1.5.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.1.1.202012091304\\db\
+2021-05-15 16:33:29,411 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\license.tmp_save
+2021-05-15 16:33:29,474 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\license.tmp
+2021-05-15 16:33:29,505 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\gpio.tmp_save
+2021-05-15 16:33:29,630 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\gpio.tmp
+2021-05-15 16:33:29,786 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-05-15 16:33:29,786 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] Command line
+2021-05-15 16:33:29,833 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_it.c_save
+2021-05-15 16:33:29,929 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_it.c
+2021-05-15 16:33:29,929 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_it.h_save
+2021-05-15 16:33:30,039 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_it.h
+2021-05-15 16:33:30,070 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_hal_msp.c_save
+2021-05-15 16:33:30,226 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Src\stm32f4xx_hal_msp.c
+2021-05-15 16:33:30,226 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\system.tmp_save
+2021-05-15 16:33:30,304 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\MXTmpFiles\system.tmp
+2021-05-15 16:33:30,335 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_hal_conf.h_save
+2021-05-15 16:33:30,476 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Inc\stm32f4xx_hal_conf.h
+2021-05-15 16:33:30,538 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Inc\main.h_save
+2021-05-15 16:33:30,617 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Inc\main.h
+2021-05-15 16:33:30,632 [INFO] CodeEngine:229 - oldGeneratedFile, C:\MyProject\easyGrow\STM32 build\main\Core\Src\main.c_save
+2021-05-15 16:33:30,788 [INFO] CodeEngine:247 - Generated code: C:\MyProject\easyGrow\STM32 build\main\Core\Src\main.c
+2021-05-15 16:33:32,199 [INFO] ProjectBuilder:2328 - Time for Copy HAL[1] : 219mS.
+2021-05-15 16:33:32,214 [INFO] ProjectBuilder:3259 - Project Generator version: 3.11.2
+2021-05-15 16:33:32,792 [INFO] ConfigFileManager:1238 - The Die is : DIE431
+2021-05-15 16:33:35,377 [INFO] ProjectBuilder:3425 - Time for Generating toolchain IDE Files: 3163mS.
+2021-05-15 16:33:35,377 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-05-15 16:33:35,392 [INFO] ProjectBuilder:2207 - Time for Copy CMSIS : 0mS.
+2021-05-15 16:37:06,522 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:37:06,569 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:37:06,709 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:37:06,756 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:37:06,897 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:37:06,944 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2021-05-15 16:37:07,068 [INFO] Gpio:248 - dependency for GPIO [ADC1, RCC, SYS, USART1, USART2]
+2021-05-15 16:37:07,131 [INFO] NvicIntPanel:90 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
