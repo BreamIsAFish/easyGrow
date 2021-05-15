@@ -43,8 +43,8 @@ typedef struct Myqueue {
 #define MESSAGE_LENGHT          50
 #define AUTO_MIN_HUMID_PUMP_ON  30
 #define AUTO_MAX_HUMID_PUMP_OFF 90
-#define AUTO_MIN_LIGHT_ON       30
-#define AUTO_MAX_LIGHT_OFF      60
+#define AUTO_MIN_LIGHT_ON       25
+#define AUTO_MAX_LIGHT_OFF      35
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -74,6 +74,7 @@ void Myqueue_Add(myqueue *q, uint32_t value);
 uint32_t Humid_Calibrate(uint32_t value);
 uint32_t Light_Calibrate(uint32_t value);
 uint32_t Temperature_Calibrate(uint32_t value);
+uint32_t Myqueue_GetAvg(myqueue *q);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -153,40 +154,60 @@ int main(void)
 	calibrated_light = Light_Calibrate(Myqueue_GetAvg(&light));
 	calibrated_temperature = Temperature_Calibrate(Myqueue_GetAvg(&temperature));
 
+//	calibrated_humid = Myqueue_GetAvg(&humid);
+//	calibrated_light = Myqueue_GetAvg(&light);
+//	calibrated_temperature = Myqueue_GetAvg(&temperature);
 
-	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12) == GPIO_PIN_RESET) {//if force Pump on
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+
+	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) == GPIO_PIN_RESET) { //in Auto Pump Mode
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);//Auto mode LED on
 	} else {
-		if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) == GPIO_PIN_RESET) { //in Auto Pump Mode
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);//Auto mode LED off
+	}
+
+
+//	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12) == GPIO_PIN_RESET) {
+//		sprintf(buffer, "PIN_12_RESET\n\r");
+//		HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
+//		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+//	} else {
+//		sprintf(buffer, "PIN_12_SET\n\r");
+//		HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
+//		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+//	}
+	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12) == GPIO_PIN_SET) {//if force Pump on
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump on
+	} else {
+		if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) == GPIO_PIN_SET) { //in Auto Pump Mode
 			if ((inAutoPumpOn == 1) || (calibrated_humid <= AUTO_MIN_HUMID_PUMP_ON)) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump on
 				inAutoPumpOn = 1;
 				if (calibrated_humid >= AUTO_MAX_HUMID_PUMP_OFF) {
-					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump off
 					inAutoPumpOn = 0;
 				}
 			} else {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump off
 				inAutoPumpOn = 0;
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET); // force Pump off
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET); // force Pump off
 		}
 	}
 
 
-	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8) == GPIO_PIN_RESET) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Lamp on
+	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8) == GPIO_PIN_SET) {
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp on
 	} else {
 		if ((inAutoLightOn == 1) || (calibrated_light <= AUTO_MIN_LIGHT_ON)) {//normally auto mode
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Lamp on
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp on
 			inAutoLightOn = 1;
 			if (calibrated_light >= AUTO_MAX_LIGHT_OFF) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Lamp off
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp off
 				inAutoLightOn = 0;
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Lamp off
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp off
 			inAutoLightOn = 0;
 		}
 	}
@@ -212,7 +233,9 @@ int main(void)
 	sprintf(buffer, "%d",calibrated_temperature);
 	HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
 
-
+	//int tmp = temperature->mSum;
+//	sprintf(buffer, "TemperatureSum = %d\n\r", tmp);
+//	HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
 	HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -428,8 +451,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA11 PA12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+  /*Configure GPIO pins : PA8 PA11 PA12 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -450,7 +473,6 @@ void Myqueue_Add(myqueue *q, uint32_t value)
 	if (q->mSize < q->mCap) {
 		q->mData[q->mSize] = value;
 		q->mSize += 1;
-		q->mFront += 1;
 		q->mSum += value;
 		q->mAvg = (q->mSum) / (q->mSize);
 		return;
@@ -458,7 +480,7 @@ void Myqueue_Add(myqueue *q, uint32_t value)
 	q->mSum -= q->mData[q->mFront];
 	q->mSum += value;
 	q->mData[q->mFront] = value;
-	q->mFront = (q->mFront + 1) % (q->mSize);
+	q->mFront = (q->mFront + 1) % (q->mCap);
 	q->mAvg = (q->mSum) / (q->mCap);
 }
 uint32_t Myqueue_GetAvg(myqueue *q)
@@ -472,16 +494,16 @@ uint32_t Humid_Calibrate(uint32_t value)
 	uint32_t range = max - min;
 	if (value < min) value = min;
 	if (value > max) value = max;
-	return (max - value) / range;
+	return (max - value) * 100 / range;
 }
 uint32_t Light_Calibrate(uint32_t value)
 {
-	uint32_t max = 4095;
-	uint32_t min = 0;
+	uint32_t max = 3110;
+	uint32_t min = 690;
 	uint32_t range = max - min;
 	if (value < min) value = min;
 	if (value > max) value = max;
-	return (max - value) / range;
+	return (max - value) * 100 / range;
 }
 uint32_t Temperature_Calibrate(uint32_t value)
 {
