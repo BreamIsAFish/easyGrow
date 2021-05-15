@@ -155,42 +155,31 @@ int main(void)
 
 
 	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12) == GPIO_PIN_RESET) {//if force Pump on
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Pump on
 	} else {
 		if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) == GPIO_PIN_RESET) { //in Auto Pump Mode
 			if ((inAutoPumpOn == 1) || (calibrated_humid <= AUTO_MIN_HUMID_PUMP_ON)) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Pump on
 				inAutoPumpOn = 1;
 				if (calibrated_humid >= AUTO_MAX_HUMID_PUMP_OFF) {
-					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Pump off
 					inAutoPumpOn = 0;
 				}
 			} else {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Pump off
 				inAutoPumpOn = 0;
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET); // force Pump off
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET); // force Pump off
 		}
 	}
-
-
 	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8) == GPIO_PIN_RESET) {
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Lamp on
 	} else {
-		if ((inAutoLightOn == 1) || (calibrated_light <= AUTO_MIN_LIGHT_ON)) {//normally auto mode
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Lamp on
-			inAutoLightOn = 1;
-			if (calibrated_light >= AUTO_MAX_LIGHT_OFF) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Lamp off
-				inAutoLightOn = 0;
-			}
-		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Lamp off
-			inAutoLightOn = 0;
+		if ((inAutoLightOn == 1) || (calibrated_light <= AUTO_MIN_LIGHT_ON)) {
+
 		}
 	}
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

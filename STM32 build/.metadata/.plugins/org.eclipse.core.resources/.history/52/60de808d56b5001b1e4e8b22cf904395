@@ -181,16 +181,8 @@ int main(void)
 		if ((inAutoLightOn == 1) || (calibrated_light <= AUTO_MIN_LIGHT_ON)) {//normally auto mode
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Lamp on
 			inAutoLightOn = 1;
-			if (calibrated_light >= AUTO_MAX_LIGHT_OFF) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Lamp off
-				inAutoLightOn = 0;
-			}
-		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Lamp off
-			inAutoLightOn = 0;
 		}
 	}
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
