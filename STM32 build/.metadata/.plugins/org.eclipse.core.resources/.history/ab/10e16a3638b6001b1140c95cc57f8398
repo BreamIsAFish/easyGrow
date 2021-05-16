@@ -42,7 +42,7 @@ typedef struct Myqueue {
 /* USER CODE BEGIN PD */
 #define MESSAGE_LENGHT          50
 #define AUTO_MIN_HUMID_PUMP_ON  30
-#define AUTO_MAX_HUMID_PUMP_OFF 70
+#define AUTO_MAX_HUMID_PUMP_OFF 90
 #define AUTO_MIN_LIGHT_ON       35
 #define AUTO_MAX_LIGHT_OFF      45
 /* USER CODE END PD */

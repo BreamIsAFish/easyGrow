@@ -1264,8 +1264,8 @@ int main(void)
  8000eb0:	4603      	mov	r3, r0
  8000eb2:	2b01      	cmp	r3, #1
  8000eb4:	d105      	bne.n	8000ec2 <main+0x156>
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump on
- 8000eb6:	2201      	movs	r2, #1
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+ 8000eb6:	2200      	movs	r2, #0
  8000eb8:	2180      	movs	r1, #128	; 0x80
  8000eba:	4879      	ldr	r0, [pc, #484]	; (80010a0 <main+0x334>)
  8000ebc:	f001 fc50 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1285,8 +1285,8 @@ int main(void)
  8000eda:	f8d7 30c0 	ldr.w	r3, [r7, #192]	; 0xc0
  8000ede:	2b1e      	cmp	r3, #30
  8000ee0:	d814      	bhi.n	8000f0c <main+0x1a0>
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump on
- 8000ee2:	2201      	movs	r2, #1
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+ 8000ee2:	2200      	movs	r2, #0
  8000ee4:	2180      	movs	r1, #128	; 0x80
  8000ee6:	486e      	ldr	r0, [pc, #440]	; (80010a0 <main+0x334>)
  8000ee8:	f001 fc3a 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1295,10 +1295,10 @@ int main(void)
  8000eee:	f8c7 30d4 	str.w	r3, [r7, #212]	; 0xd4
 				if (calibrated_humid >= AUTO_MAX_HUMID_PUMP_OFF) {
  8000ef2:	f8d7 30c0 	ldr.w	r3, [r7, #192]	; 0xc0
- 8000ef6:	2b59      	cmp	r3, #89	; 0x59
+ 8000ef6:	2b45      	cmp	r3, #69	; 0x45
  8000ef8:	d916      	bls.n	8000f28 <main+0x1bc>
-					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump off
- 8000efa:	2200      	movs	r2, #0
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+ 8000efa:	2201      	movs	r2, #1
  8000efc:	2180      	movs	r1, #128	; 0x80
  8000efe:	4868      	ldr	r0, [pc, #416]	; (80010a0 <main+0x334>)
  8000f00:	f001 fc2e 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1309,8 +1309,8 @@ int main(void)
  8000f0a:	e00d      	b.n	8000f28 <main+0x1bc>
 				}
 			} else {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump off
- 8000f0c:	2200      	movs	r2, #0
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+ 8000f0c:	2201      	movs	r2, #1
  8000f0e:	2180      	movs	r1, #128	; 0x80
  8000f10:	4863      	ldr	r0, [pc, #396]	; (80010a0 <main+0x334>)
  8000f12:	f001 fc25 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1320,8 +1320,8 @@ int main(void)
  8000f1c:	e004      	b.n	8000f28 <main+0x1bc>
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET); // force Pump off
- 8000f1e:	2200      	movs	r2, #0
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET); // force Pump off
+ 8000f1e:	2201      	movs	r2, #1
  8000f20:	2180      	movs	r1, #128	; 0x80
  8000f22:	485f      	ldr	r0, [pc, #380]	; (80010a0 <main+0x334>)
  8000f24:	f001 fc1c 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1336,8 +1336,8 @@ int main(void)
  8000f32:	4603      	mov	r3, r0
  8000f34:	2b01      	cmp	r3, #1
  8000f36:	d105      	bne.n	8000f44 <main+0x1d8>
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp on
- 8000f38:	2201      	movs	r2, #1
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp on
+ 8000f38:	2200      	movs	r2, #0
  8000f3a:	2140      	movs	r1, #64	; 0x40
  8000f3c:	4858      	ldr	r0, [pc, #352]	; (80010a0 <main+0x334>)
  8000f3e:	f001 fc0f 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1348,10 +1348,10 @@ int main(void)
  8000f48:	2b01      	cmp	r3, #1
  8000f4a:	d003      	beq.n	8000f54 <main+0x1e8>
  8000f4c:	f8d7 30bc 	ldr.w	r3, [r7, #188]	; 0xbc
- 8000f50:	2b19      	cmp	r3, #25
+ 8000f50:	2b23      	cmp	r3, #35	; 0x23
  8000f52:	d814      	bhi.n	8000f7e <main+0x212>
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp on
- 8000f54:	2201      	movs	r2, #1
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp on
+ 8000f54:	2200      	movs	r2, #0
  8000f56:	2140      	movs	r1, #64	; 0x40
  8000f58:	4851      	ldr	r0, [pc, #324]	; (80010a0 <main+0x334>)
  8000f5a:	f001 fc01 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1360,10 +1360,10 @@ int main(void)
  8000f60:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
 			if (calibrated_light >= AUTO_MAX_LIGHT_OFF) {
  8000f64:	f8d7 30bc 	ldr.w	r3, [r7, #188]	; 0xbc
- 8000f68:	2b22      	cmp	r3, #34	; 0x22
+ 8000f68:	2b2c      	cmp	r3, #44	; 0x2c
  8000f6a:	d910      	bls.n	8000f8e <main+0x222>
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp off
- 8000f6c:	2200      	movs	r2, #0
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp off
+ 8000f6c:	2201      	movs	r2, #1
  8000f6e:	2140      	movs	r1, #64	; 0x40
  8000f70:	484b      	ldr	r0, [pc, #300]	; (80010a0 <main+0x334>)
  8000f72:	f001 fbf5 	bl	8002760 <HAL_GPIO_WritePin>
@@ -1374,8 +1374,8 @@ int main(void)
  8000f7c:	e007      	b.n	8000f8e <main+0x222>
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp off
- 8000f7e:	2200      	movs	r2, #0
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp off
+ 8000f7e:	2201      	movs	r2, #1
  8000f80:	2140      	movs	r1, #64	; 0x40
  8000f82:	4847      	ldr	r0, [pc, #284]	; (80010a0 <main+0x334>)
  8000f84:	f001 fbec 	bl	8002760 <HAL_GPIO_WritePin>
@@ -2300,11 +2300,11 @@ uint32_t Light_Calibrate(uint32_t value)
  800156a:	b087      	sub	sp, #28
  800156c:	af00      	add	r7, sp, #0
  800156e:	6078      	str	r0, [r7, #4]
-	uint32_t max = 3110;
- 8001570:	f640 4326 	movw	r3, #3110	; 0xc26
+	uint32_t max = 2700;
+ 8001570:	f640 238c 	movw	r3, #2700	; 0xa8c
  8001574:	617b      	str	r3, [r7, #20]
-	uint32_t min = 690;
- 8001576:	f240 23b2 	movw	r3, #690	; 0x2b2
+	uint32_t min = 300;
+ 8001576:	f44f 7396 	mov.w	r3, #300	; 0x12c
  800157a:	613b      	str	r3, [r7, #16]
 	uint32_t range = max - min;
  800157c:	697a      	ldr	r2, [r7, #20]

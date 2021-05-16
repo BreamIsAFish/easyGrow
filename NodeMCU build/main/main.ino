@@ -9,11 +9,11 @@
 #define PUMP_AUTO_PIN 4
 #define LAMP_ON_PIN 0
 
-//const char* ssid = "Sleepy_Hollow";
-//const char* password = "6X4VP97684";
+const char* ssid = "Sleepy_Hollow_2G";
+const char* password = "6X4VP97684";
 
-const char* ssid = "iPhone";
-const char* password = "password";
+//const char* ssid = "iPhone";
+//const char* password = "password";
 const char* mqtt_server = "broker.netpie.io";
 const int mqtt_port = 1883;
 const char* mqtt_Client = "e97157c7-82cb-47af-818f-a51a7ea9412d";

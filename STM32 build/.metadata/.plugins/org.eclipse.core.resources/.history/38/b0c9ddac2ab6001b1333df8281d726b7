@@ -42,9 +42,9 @@ typedef struct Myqueue {
 /* USER CODE BEGIN PD */
 #define MESSAGE_LENGHT          50
 #define AUTO_MIN_HUMID_PUMP_ON  30
-#define AUTO_MAX_HUMID_PUMP_OFF 70
-#define AUTO_MIN_LIGHT_ON       35
-#define AUTO_MAX_LIGHT_OFF      45
+#define AUTO_MAX_HUMID_PUMP_OFF 90
+#define AUTO_MIN_LIGHT_ON       25
+#define AUTO_MAX_LIGHT_OFF      35
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -151,11 +151,11 @@ int main(void)
 
 
 	calibrated_humid = Humid_Calibrate(Myqueue_GetAvg(&humid));
-	calibrated_light = Light_Calibrate(Myqueue_GetAvg(&light));
+//	calibrated_light = Light_Calibrate(Myqueue_GetAvg(&light));
 	calibrated_temperature = Temperature_Calibrate(Myqueue_GetAvg(&temperature));
 
 //	calibrated_humid = Myqueue_GetAvg(&humid);
-//	calibrated_light = Myqueue_GetAvg(&light);
+	calibrated_light = Myqueue_GetAvg(&light);
 //	calibrated_temperature = Myqueue_GetAvg(&temperature);
 
 
@@ -176,38 +176,38 @@ int main(void)
 //		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
 //	}
 	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12) == GPIO_PIN_SET) {//if force Pump on
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump on
 	} else {
 		if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) == GPIO_PIN_SET) { //in Auto Pump Mode
 			if ((inAutoPumpOn == 1) || (calibrated_humid <= AUTO_MIN_HUMID_PUMP_ON)) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump on
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump on
 				inAutoPumpOn = 1;
 				if (calibrated_humid >= AUTO_MAX_HUMID_PUMP_OFF) {
-					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump off
 					inAutoPumpOn = 0;
 				}
 			} else {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);// Pump off
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);// Pump off
 				inAutoPumpOn = 0;
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET); // force Pump off
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET); // force Pump off
 		}
 	}
 
 
 	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8) == GPIO_PIN_SET) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp on
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp on
 	} else {
 		if ((inAutoLightOn == 1) || (calibrated_light <= AUTO_MIN_LIGHT_ON)) {//normally auto mode
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp on
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp on
 			inAutoLightOn = 1;
 			if (calibrated_light >= AUTO_MAX_LIGHT_OFF) {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp off
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp off
 				inAutoLightOn = 0;
 			}
 		} else {
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);// Lamp off
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);// Lamp off
 			inAutoLightOn = 0;
 		}
 	}
@@ -499,8 +499,8 @@ uint32_t Humid_Calibrate(uint32_t value)
 }
 uint32_t Light_Calibrate(uint32_t value)
 {
-	uint32_t max = 2700;
-	uint32_t min = 300;
+	uint32_t max = 3110;
+	uint32_t min = 690;
 	uint32_t range = max - min;
 	if (value < min) value = min;
 	if (value > max) value = max;

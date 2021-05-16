@@ -1,4 +1,4 @@
-13:39:45 **** Incremental Build of configuration Debug for project main ****
+18:17:06 **** Incremental Build of configuration Debug for project main ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
@@ -115,11 +115,11 @@ arm-none-eabi-size   main.elf
    text	   data	    bss	    dec	    hex	filename
   17108	    120	   1840	  19068	   4a7c	main.elf
 Finished building: default.size.stdout
- 
 Finished building: main.bin
+ 
  
 Finished building: main.list
  
 
-13:39:47 Build Finished. 0 errors, 17 warnings. (took 2s.564ms)
+18:17:11 Build Finished. 0 errors, 17 warnings. (took 4s.448ms)
 
