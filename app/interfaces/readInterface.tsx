@@ -8,3 +8,5 @@ export default interface ReadData {
     temperature: number
   }
 }
+
+export type StatusType = "Humid" | "Temperature" | "Light"

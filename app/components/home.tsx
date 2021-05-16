@@ -1,8 +1,8 @@
-import { StatusBar } from "expo-status-bar"
-import React, { FunctionComponent, useState, useEffect, useCallback } from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import React, { FunctionComponent, useState, useEffect } from "react"
+import { StyleSheet, Text, TouchableOpacity, View, FlatList } from "react-native"
 import { netpie } from "../axiosConfig"
 import ReadData from "../interfaces/readInterface"
+import StatusBar from "./statusBar"
 
 type Devices = "lamp" | "pump" | "autoPump"
 
@@ -26,7 +26,6 @@ const Home: FunctionComponent = () => {
     netpie
       .get<ReadData>(`/shadow/data`)
       .then(({ data }) => {
-        console.log(data.data)
         setRefresh(false)
         // sensors //
         setHumid(data.data.humid)
@@ -43,11 +42,10 @@ const Home: FunctionComponent = () => {
   }
 
   const sendData = (type: Devices) => {
-    let value: string
+    let value: "on" | "off"
     if (type === "lamp") value = lamp === "on" ? `off` : `on`
     else if (type === "pump") value = pump === "on" ? `off` : `on`
     else value = autoPump === "on" ? `off` : `on`
-    console.log(value)
     netpie({
       method: "PUT",
       url: "/message",
@@ -57,10 +55,10 @@ const Home: FunctionComponent = () => {
       },
       data: value,
     })
-      .then((data) => {
-        console.log("sent")
-        console.log(data)
-        setRefresh(true)
+      .then(() => {
+        if (type === "lamp") setLamp(value)
+        else if (type === "pump") setPump(value)
+        else setAutoPump(value)
       })
       .catch((response) => {
         console.log(response)
@@ -68,19 +66,18 @@ const Home: FunctionComponent = () => {
   }
 
   useEffect(() => {
-    console.log(refresh)
-    if (refresh) fetchData()
-  }, [refresh])
+    // if (refresh) fetchData()
+    fetchData()
+  }, [humid, light, temperature])
 
   return (
     <View style={styles.container}>
-      <Text>Humid : {humid}</Text>
-      <Text>Light Level : {light}</Text>
-      <Text>Temperature : {temperature}</Text>
-      <StatusBar style="auto" />
-      <TouchableOpacity onPress={() => sendData("lamp")}>
+      <StatusBar type={"Humid"} value={humid} />
+      <StatusBar type={"Temperature"} value={temperature} />
+      <StatusBar type={"Light"} value={light} />
+      {/* <TouchableOpacity onPress={() => sendData("lamp")}>
         <Text>lamp : {lamp}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   )
 }
