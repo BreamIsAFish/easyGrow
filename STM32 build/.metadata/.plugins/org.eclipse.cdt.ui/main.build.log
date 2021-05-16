@@ -1,9 +1,9 @@
-18:18:45 **** Incremental Build of configuration Debug for project main ****
+13:39:45 **** Incremental Build of configuration Debug for project main ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
 ../Core/Src/main.c:216:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  sprintf(buffer, "start");
+  sprintf(buffer, "start\n");
   ^~~~~~~
 ../Core/Src/main.c:216:2: warning: incompatible implicit declaration of built-in function 'sprintf'
 ../Core/Src/main.c:216:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
@@ -22,11 +22,11 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:219:36: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+../Core/Src/main.c:220:36: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
   sprintf(buffer, "Percent Humid = %d\n\r",calibrated_humid);
                                    ~^
                                    %ld
-../Core/Src/main.c:220:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+../Core/Src/main.c:221:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
   HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
                              ^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
@@ -36,11 +36,11 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:221:20: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-  sprintf(buffer, "%d",calibrated_humid);
+../Core/Src/main.c:222:20: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+  sprintf(buffer, "%d\n",calibrated_humid);
                    ~^
                    %ld
-../Core/Src/main.c:222:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+../Core/Src/main.c:223:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
   HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
                              ^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
@@ -50,11 +50,11 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:225:36: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+../Core/Src/main.c:226:36: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
   sprintf(buffer, "Percent Light = %d\n\r",calibrated_light);
                                    ~^
                                    %ld
-../Core/Src/main.c:226:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+../Core/Src/main.c:227:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
   HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
                              ^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
@@ -64,11 +64,11 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:227:20: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-  sprintf(buffer, "%d",calibrated_light);
+../Core/Src/main.c:228:20: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+  sprintf(buffer, "%d\n",calibrated_light);
                    ~^
                    %ld
-../Core/Src/main.c:228:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+../Core/Src/main.c:229:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
   HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
                              ^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
@@ -78,11 +78,11 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:231:34: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+../Core/Src/main.c:232:34: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
   sprintf(buffer, "Temperature = %d\n\r",calibrated_temperature);
                                  ~^
                                  %ld
-../Core/Src/main.c:232:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+../Core/Src/main.c:233:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
   HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
                              ^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
@@ -92,11 +92,11 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:233:20: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
-  sprintf(buffer, "%d",calibrated_temperature);
+../Core/Src/main.c:234:20: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+  sprintf(buffer, "%d\n",calibrated_temperature);
                    ~^
                    %ld
-../Core/Src/main.c:234:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+../Core/Src/main.c:235:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
   HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
                              ^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
@@ -113,7 +113,7 @@ arm-none-eabi-objdump -h -S  main.elf  > "main.list"
 arm-none-eabi-objcopy  -O binary  main.elf  "main.bin"
 arm-none-eabi-size   main.elf 
    text	   data	    bss	    dec	    hex	filename
-  17100	    120	   1840	  19060	   4a74	main.elf
+  17108	    120	   1840	  19068	   4a7c	main.elf
 Finished building: default.size.stdout
  
 Finished building: main.bin
@@ -121,5 +121,5 @@ Finished building: main.bin
 Finished building: main.list
  
 
-18:18:47 Build Finished. 0 errors, 17 warnings. (took 2s.346ms)
+13:39:47 Build Finished. 0 errors, 17 warnings. (took 2s.564ms)
 
