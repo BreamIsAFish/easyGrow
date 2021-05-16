@@ -2,6 +2,8 @@ import React, { FunctionComponent, useState, useEffect } from "react"
 import { StyleSheet, Text, TouchableOpacity, View, FlatList } from "react-native"
 import { netpie } from "../axiosConfig"
 import ReadData from "../interfaces/readInterface"
+import Header from "./header"
+import Navbar from "./navbar"
 import StatusBar from "./statusBar"
 
 type Devices = "lamp" | "pump" | "autoPump"
@@ -72,12 +74,18 @@ const Home: FunctionComponent = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar type={"Humid"} value={humid} />
-      <StatusBar type={"Temperature"} value={temperature} />
-      <StatusBar type={"Light"} value={light} />
-      {/* <TouchableOpacity onPress={() => sendData("lamp")}>
+      <Header />
+      <View style={styles.content}>
+        <StatusBar type={"Humid"} value={humid} />
+        <StatusBar type={"Temperature"} value={temperature} />
+        <StatusBar type={"Light"} value={light} />
+        {/* <TouchableOpacity onPress={() => sendData("lamp")}>
         <Text>lamp : {lamp}</Text>
       </TouchableOpacity> */}
+      </View>
+      <View style={styles.footer}>
+        <Navbar />
+      </View>
     </View>
   )
 }
@@ -86,8 +94,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  content: {
+    padding: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+  footer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
   },
 })
 

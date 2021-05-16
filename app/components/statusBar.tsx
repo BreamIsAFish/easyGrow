@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { StatusType } from "../interfaces/readInterface"
 
 const StatusBar: FC<{ type: StatusType; value: number }> = ({ type, value }) => {
-  const [icon, setIcon] = useState<string>(type === "Humid" ? "water-outline" : type === "Light" ? "sunny-outline" : "thermometer-outline")
+  const [icon] = useState<string>(type === "Humid" ? "water-outline" : type === "Light" ? "sunny-outline" : "thermometer-outline")
   const [valueSymbol] = useState<string>(type === "Temperature" ? "°C" : "%")
   const label = {
     Humid: "Soil Humid",
@@ -32,16 +32,12 @@ const StatusBar: FC<{ type: StatusType; value: number }> = ({ type, value }) => 
 
 const styles = StyleSheet.create({
   root: {
-    minWidth: 275,
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  card: {
+    width: 350,
     flexDirection: "row",
     flexWrap: "wrap",
   },
   textField: {
-    marginLeft: 8,
+    marginLeft: 2,
     alignItems: "flex-start",
     justifyContent: "center",
   },
