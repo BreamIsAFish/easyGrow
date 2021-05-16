@@ -213,7 +213,7 @@ int main(void)
 	}
 
 
-	sprintf(buffer, "start\n");
+	sprintf(buffer, "start\n\r");
 	HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
 	HAL_Delay(10);
 

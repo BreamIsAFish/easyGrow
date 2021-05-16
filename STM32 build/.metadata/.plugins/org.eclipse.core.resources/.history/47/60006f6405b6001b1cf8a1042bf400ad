@@ -213,25 +213,25 @@ int main(void)
 	}
 
 
-	sprintf(buffer, "start\n");
+	sprintf(buffer, "start");
 	HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
 	HAL_Delay(10);
 
 	sprintf(buffer, "Percent Humid = %d\n\r",calibrated_humid);
 	HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
-	sprintf(buffer, "%d\n",calibrated_humid);
+	sprintf(buffer, "%d",calibrated_humid);
 	HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
 	HAL_Delay(10);
 
 	sprintf(buffer, "Percent Light = %d\n\r",calibrated_light);
 	HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
-	sprintf(buffer, "%d\n",calibrated_light);
+	sprintf(buffer, "%d",calibrated_light);
 	HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
 	HAL_Delay(10);
 
 	sprintf(buffer, "Temperature = %d\n\r",calibrated_temperature);
 	HAL_UART_Transmit(&huart2, buffer, strlen(buffer), 1000);
-	sprintf(buffer, "%d\n",calibrated_temperature);
+	sprintf(buffer, "%d",calibrated_temperature);
 	HAL_UART_Transmit(&huart1, buffer, strlen(buffer), 1000);
 
 	//int tmp = temperature->mSum;
