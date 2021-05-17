@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from "react"
-import { StackNavigationProp } from "@react-navigation/stack"
-import { StyleSheet, Text, TouchableOpacity, View, FlatList } from "react-native"
+import { StyleSheet, TouchableOpacity, View } from "react-native"
 import { netpie } from "../axiosConfig"
 import ReadData from "../interfaces/readInterface"
 import Navbar from "./navbar"
@@ -83,6 +82,7 @@ const Home: FC<Props> = ({ navigation }) => {
       <View style={styles.content}>
         <TouchableOpacity
         // onPress={() => {
+        //   console.log("pressed")
         //   directHumid()
         // }}
         >

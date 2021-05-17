@@ -20,6 +20,8 @@ export type NavbarItem = { key: number; name: string; icon: string; link: keyof 
 export type RootStackParamList = {
   Home: undefined
   HumidDisplay: undefined
+  LightDisplay: undefined
+  TempDisplay: undefined
 }
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>

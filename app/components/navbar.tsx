@@ -5,10 +5,10 @@ import { Props, RootStackParamList, NavbarItem } from "../interfaces/readInterfa
 
 const Navbar: FC<Props> = ({ navigation }) => {
   const items: NavbarItem = [
-    { key: 1, name: "Temp", icon: "thermometer", link: "HumidDisplay" },
+    { key: 1, name: "Temp", icon: "thermometer", link: "TempDisplay" },
     { key: 2, name: "Soil Hu", icon: "water", link: "HumidDisplay" },
     { key: 3, name: "Home", icon: "leaf-outline", link: "Home" },
-    { key: 4, name: "Light", icon: "sunny", link: "HumidDisplay" },
+    { key: 4, name: "Light", icon: "sunny", link: "LightDisplay" },
     { key: 5, name: "Help", icon: "information-circle", link: "HumidDisplay" },
   ]
 
