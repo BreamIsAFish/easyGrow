@@ -1,25 +1,25 @@
-import React, { FunctionComponent, useState, useEffect } from "react"
+import React, { FC, useState, useEffect } from "react"
+import { StackNavigationProp } from "@react-navigation/stack"
 import { StyleSheet, Text, TouchableOpacity, View, FlatList } from "react-native"
 import { netpie } from "../axiosConfig"
 import ReadData from "../interfaces/readInterface"
-import Header from "./header"
 import Navbar from "./navbar"
+import Header from "./header"
 import StatusBar from "./statusBar"
-
-type Devices = "lamp" | "pump" | "autoPump"
+import { Toggle, Props } from "../interfaces/readInterface"
 
 // export default function Home() {
-const Home: FunctionComponent = () => {
+const Home: FC<Props> = ({ navigation }) => {
   // sensor values //
   const [humid, setHumid] = useState<number>(1)
   const [light, setLight] = useState<number>(1)
   const [temperature, setTemperature] = useState<number>(1)
   // on & off control //
-  const [lamp, setLamp] = useState<"on" | "off">("off")
-  const [pump, setPump] = useState<"on" | "off">("off")
-  const [autoPump, setAutoPump] = useState<"on" | "off">("off")
+  // const [lamp, setLamp] = useState<Toggle>("off")
+  // const [pump, setPump] = useState<Toggle>("off")
+  // const [autoPump, setAutoPump] = useState<Toggle>("off")
   // page state //
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  // const [isLoading, setIsLoading] = useState<boolean>(true)
   const [refresh, setRefresh] = useState<boolean>(false)
 
   // useEffect //
@@ -34,75 +34,95 @@ const Home: FunctionComponent = () => {
         setLight(data.data.light)
         setTemperature(data.data.temperature)
         // on & off //
-        setLamp(data.data.lamp)
-        setPump(data.data.pump)
-        setAutoPump(data.data.autoPump)
+        // setLamp(data.data.lamp)
+        // setPump(data.data.pump)
+        // setAutoPump(data.data.autoPump)
       })
       .catch((response) => {
         console.log(response)
       })
   }
 
-  const sendData = (type: Devices) => {
-    let value: "on" | "off"
-    if (type === "lamp") value = lamp === "on" ? `off` : `on`
-    else if (type === "pump") value = pump === "on" ? `off` : `on`
-    else value = autoPump === "on" ? `off` : `on`
-    netpie({
-      method: "PUT",
-      url: "/message",
-      headers: { "content-type": "text/plain" },
-      params: {
-        topic: type,
-      },
-      data: value,
-    })
-      .then(() => {
-        if (type === "lamp") setLamp(value)
-        else if (type === "pump") setPump(value)
-        else setAutoPump(value)
-      })
-      .catch((response) => {
-        console.log(response)
-      })
-  }
+  // const sendData = (type: Devices) => {
+  //   let value: Toggle
+  //   if (type === "lamp") value = lamp === "on" ? `off` : `on`
+  //   else if (type === "pump") value = pump === "on" ? `off` : `on`
+  //   else value = autoPump === "on" ? `off` : `on`
+  //   netpie({
+  //     method: "PUT",
+  //     url: "/message",
+  //     headers: { "content-type": "text/plain" },
+  //     params: {
+  //       topic: type,
+  //     },
+  //     data: value,
+  //   })
+  //     .then(() => {
+  //       if (type === "lamp") setLamp(value)
+  //       else if (type === "pump") setPump(value)
+  //       else setAutoPump(value)
+  //     })
+  //     .catch((response) => {
+  //       console.log(response)
+  //     })
+  // }
 
   useEffect(() => {
     // if (refresh) fetchData()
     fetchData()
   }, [humid, light, temperature])
 
+  // redirect //
+  // const directHumid = () => {
+  //   navigation.navigate("HumidDisplay")
+  // }
+
   return (
-    <View style={styles.container}>
-      <Header />
+    <View style={styles.header}>
+      <Header title={"EasyGrow"} />
       <View style={styles.content}>
-        <StatusBar type={"Humid"} value={humid} />
-        <StatusBar type={"Temperature"} value={temperature} />
-        <StatusBar type={"Light"} value={light} />
+        <TouchableOpacity
+        // onPress={() => {
+        //   directHumid()
+        // }}
+        >
+          <StatusBar type={"Humid"} value={humid} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <StatusBar type={"Temperature"} value={temperature} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <StatusBar type={"Light"} value={light} />
+        </TouchableOpacity>
         {/* <TouchableOpacity onPress={() => sendData("lamp")}>
         <Text>lamp : {lamp}</Text>
       </TouchableOpacity> */}
       </View>
       <View style={styles.footer}>
-        <Navbar />
+        <Navbar navigation={navigation} />
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  header: {
     flex: 1,
-    backgroundColor: "#fff",
+    // justifyContent: "flex-start",
+    alignItems: "center",
+    // width: 430,
   },
   content: {
-    padding: 10,
-    alignItems: "center",
+    flex: 1,
+    // width: 430,
+    paddingTop: 70,
+    // alignItems: "center",
     justifyContent: "center",
   },
   footer: {
     flex: 1,
-    alignItems: "center",
+    // width: 430,
+    // alignItems: "center",
     justifyContent: "flex-end",
   },
 })

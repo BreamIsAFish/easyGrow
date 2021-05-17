@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   textField: {
-    marginLeft: 2,
+    marginLeft: 8,
     alignItems: "flex-start",
     justifyContent: "center",
   },

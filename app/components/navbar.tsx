@@ -1,23 +1,30 @@
 import React, { FC } from "react"
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
+import { Props, RootStackParamList, NavbarItem } from "../interfaces/readInterface"
 
-const Navbar: FC = () => {
-  const icons = [
-    { key: 1, name: "Temp", link: "thermometer" },
-    { key: 2, name: "Soil Hu", link: "water" },
-    { key: 3, name: "Home", link: "leaf" },
-    { key: 4, name: "Light", link: "sunny" },
-    { key: 5, name: "Help", link: "information-circle" },
+const Navbar: FC<Props> = ({ navigation }) => {
+  const items: NavbarItem = [
+    { key: 1, name: "Temp", icon: "thermometer", link: "HumidDisplay" },
+    { key: 2, name: "Soil Hu", icon: "water", link: "HumidDisplay" },
+    { key: 3, name: "Home", icon: "leaf-outline", link: "Home" },
+    { key: 4, name: "Light", icon: "sunny", link: "HumidDisplay" },
+    { key: 5, name: "Help", icon: "information-circle", link: "HumidDisplay" },
   ]
+
+  // redirect //
+  const redirect = (page: keyof RootStackParamList) => {
+    navigation.navigate(page)
+  }
+
   return (
     <View style={styles.footer}>
-      {icons.map((icon) => {
+      {items.map((item) => {
         return (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => redirect(item.link)} key={item.key}>
             <View style={styles.icon}>
-              <Icon name={icon.link} size={32} color="grey" />
-              <Text style={styles.text}>{icon.name}</Text>
+              <Icon name={item.icon} size={32} color="grey" />
+              <Text style={styles.text}>{item.name}</Text>
             </View>
           </TouchableOpacity>
         )

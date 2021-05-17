@@ -1,13 +1,53 @@
-import { createAppContainer } from "react-navigation"
-import { createStackNavigator } from "react-navigation-stack"
+// import { createAppContainer } from "react-navigation"
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+// import {createStackNavigator} from "react-navigation-stack"
+import React from "react"
+import { createStackNavigator } from "@react-navigation/stack"
+// import { StyleSheet } from "react-native"
 import Home from "../components/home"
+import HumidDisplay from "../components/humidDisplay"
 
-const screens = {
-  Home: {
-    screen: Home,
-  },
+// const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator()
+
+// const screens = {
+//   Home: {
+//     screen: Home,
+//   },
+//   HumidDisplay: {
+//     screen: HumidDisplay,
+//   },
+// }
+
+// const NavTap = () => {
+//   return (
+//     <Tab.Navigator>
+//       <Tab.Screen name="Home" component={Home} />
+//       <Tab.Screen name="HumidDisplay" component={HumidDisplay} />
+//     </Tab.Navigator>
+//   )
+// }
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="HumidDisplay" component={HumidDisplay} />
+    </Stack.Navigator>
+  )
 }
 
-const HomeStack = createStackNavigator(screens)
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     width: 430,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+// })
 
-export default createAppContainer(HomeStack)
+// const HomeStack = createStackNavigator(screens)
+
+export default HomeStack
+// export default createAppContainer(NavTap)
