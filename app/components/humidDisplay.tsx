@@ -94,7 +94,7 @@ const HumidDisplay: FC<Props> = ({ navigation }) => {
         </Card>
       </View>
       <View style={globalStyles.footer}>
-        <Navbar navigation={navigation} />
+        <Navbar navigation={navigation} page={"HumidDisplay"} />
       </View>
     </View>
   )

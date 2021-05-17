@@ -51,7 +51,7 @@ const TempDisplay: FC<Props> = ({ navigation }) => {
         </Card>
       </View>
       <View style={globalStyles.footer}>
-        <Navbar navigation={navigation} />
+        <Navbar navigation={navigation} page={"TempDisplay"} />
       </View>
     </View>
   )

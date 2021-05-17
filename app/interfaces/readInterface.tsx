@@ -23,10 +23,15 @@ export type RootStackParamList = {
   LightDisplay: undefined
   TempDisplay: undefined
   Help: undefined
+  // Page: { page: "Humid" | "Temperature" | "Light" | "Other" }
 }
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>
 export type Props = {
-  // route: ProfileScreenRouteProp
+  navigation: ProfileScreenNavigationProp
+}
+
+export type NavProps = {
+  page: keyof RootStackParamList
   navigation: ProfileScreenNavigationProp
 }

@@ -5,7 +5,7 @@ import ReadData, { RootStackParamList } from "../interfaces/readInterface"
 import Navbar from "./navbar"
 import Header from "./header"
 import StatusBar from "./statusBar"
-import { Props } from "../interfaces/readInterface"
+import { Props, NavProps } from "../interfaces/readInterface"
 import { globalStyles } from "../styles/globalStyles"
 
 // export default function Home() {
@@ -69,7 +69,7 @@ const Home: FC<Props> = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={globalStyles.footer}>
-        <Navbar navigation={navigation} />
+        <Navbar navigation={navigation} page={"Home"} />
       </View>
     </View>
   )

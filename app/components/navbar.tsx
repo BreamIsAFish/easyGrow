@@ -1,9 +1,9 @@
 import React, { FC } from "react"
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons"
-import { Props, RootStackParamList, NavbarItem } from "../interfaces/readInterface"
+import { NavProps, RootStackParamList, NavbarItem } from "../interfaces/readInterface"
 
-const Navbar: FC<Props> = ({ navigation }) => {
+const Navbar: FC<NavProps> = ({ navigation, page }) => {
   const items: NavbarItem = [
     { key: 1, name: "Temp", icon: "thermometer", link: "TempDisplay" },
     { key: 2, name: "Soil Hu", icon: "water", link: "HumidDisplay" },
@@ -23,8 +23,8 @@ const Navbar: FC<Props> = ({ navigation }) => {
         return (
           <TouchableOpacity onPress={() => redirect(item.link)} key={item.key}>
             <View style={styles.icon}>
-              <Icon name={item.icon} size={32} color={item.name === "Home" ? "#01B636" : "grey"} />
-              <Text style={[styles.text, { color: item.name === "Home" ? "#01B636" : "grey" }]}>{item.name}</Text>
+              <Icon name={item.icon} size={32} color={item.link === page ? "#01B636" : "grey"} />
+              <Text style={[styles.text, { color: item.link === page ? "#01B636" : "grey" }]}>{item.name}</Text>
             </View>
           </TouchableOpacity>
         )

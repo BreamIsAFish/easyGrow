@@ -83,7 +83,7 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
         </Card>
       </View>
       <View style={globalStyles.footer}>
-        <Navbar navigation={navigation} />
+        <Navbar navigation={navigation} page={"LightDisplay"} />
       </View>
     </View>
   )
