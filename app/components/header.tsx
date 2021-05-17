@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
+    fontFamily: "BalooBhai2-Bold",
     fontSize: 36,
     color: "white",
   },

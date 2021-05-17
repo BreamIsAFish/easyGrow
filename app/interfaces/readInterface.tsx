@@ -22,6 +22,7 @@ export type RootStackParamList = {
   HumidDisplay: undefined
   LightDisplay: undefined
   TempDisplay: undefined
+  Help: undefined
 }
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>

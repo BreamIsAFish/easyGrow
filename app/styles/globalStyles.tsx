@@ -2,10 +2,19 @@ import { StyleSheet } from "react-native"
 
 export const globalStyles = StyleSheet.create({
   cardTitle: {
-    fontSize: 32,
-    fontWeight: "700",
-    color: "#639EF6",
-    paddingLeft: 20,
+    fontFamily: "BalooBhai2-Bold",
+    fontSize: 28,
+    fontWeight: "900",
+    paddingLeft: 30,
+  },
+  valueText: {
+    fontFamily: "BalooBhai2-SemiBold",
+    fontSize: 72,
+    paddingLeft: 30,
+  },
+  normalText: {
+    fontFamily: "BalooBhai2-Regular",
+    fontSize: 24,
   },
   header: {
     flex: 1,
@@ -13,15 +22,11 @@ export const globalStyles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    // width: 430,
-    paddingTop: 60,
-    // alignItems: "center",
+    paddingTop: 100,
     justifyContent: "center",
   },
   footer: {
     flex: 1,
-    // width: 430,
-    // alignItems: "center",
     justifyContent: "flex-end",
   },
   row: {
@@ -31,16 +36,15 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "center",
   },
   outterCard: {
-    padding: 20,
+    paddingHorizontal: 0,
+    paddingTop: 10,
     width: 400,
-    borderColor: "#639EF6",
     borderWidth: 1,
     borderRadius: 16,
   },
   innerCard: {
-    backgroundColor: "rgba(99, 158, 246, 0.08)",
-    borderColor: "#639EF6",
     borderWidth: 1,
     borderRadius: 16,
+    marginVertical: 0,
   },
 })

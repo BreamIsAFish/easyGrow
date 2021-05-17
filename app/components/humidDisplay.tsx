@@ -6,6 +6,7 @@ import { netpie } from "../axiosConfig"
 import Header from "./header"
 import Navbar from "./navbar"
 import ReadData, { Toggle, Devices, Props } from "../interfaces/readInterface"
+import { globalStyles } from "../styles/globalStyles"
 
 const HumidDisplay: FC<Props> = ({ navigation }) => {
   // sensor values //
@@ -60,28 +61,28 @@ const HumidDisplay: FC<Props> = ({ navigation }) => {
 
   return (
     // <View style={styles.icon}>
-    <View style={styles.header}>
+    <View style={globalStyles.header}>
       <Header title={"Soil Humid"} />
-      <View style={styles.content}>
-        <Card>
+      <View style={globalStyles.content}>
+        <Card containerStyle={[globalStyles.outterCard, { borderColor: "#4ED4FF" }]}>
           <View>
-            <Text style={{ fontSize: 18 }}>Press to water your plant</Text>
+            <Text style={[globalStyles.cardTitle, { color: "#4ED4FF" }]}>Press to water your plant</Text>
           </View>
           <TouchableOpacity
             onPress={() => {
               sendData("pump")
             }}
           >
-            <Card>
-              <View style={styles.row}>
-                <Icon name="water" size={200} />
+            <Card containerStyle={[globalStyles.innerCard, { borderColor: "#4ED4FF", backgroundColor: "rgba(78, 212, 255, 0.08)" }]}>
+              <View style={globalStyles.row}>
+                <Icon name="water" size={200} color="#4ED4FF" />
               </View>
             </Card>
           </TouchableOpacity>
-          <View style={styles.row}>
-            <Text style={{ fontSize: 54 }}>{`${humid} %`}</Text>
-            <Card>
-              <Text>Auto Watering</Text>
+          <View style={globalStyles.row}>
+            <Text style={[globalStyles.valueText, { color: "#4ED4FF" }]}>{`${humid} %`}</Text>
+            <Card containerStyle={[globalStyles.innerCard, { borderColor: "#4ED4FF" }]}>
+              <Text style={[globalStyles.normalText, { color: "#4ED4FF" }]}>Auto Watering</Text>
               <Switch
                 onValueChange={() => {
                   sendData("autoPump")
@@ -92,38 +93,11 @@ const HumidDisplay: FC<Props> = ({ navigation }) => {
           </View>
         </Card>
       </View>
-      <View style={styles.footer}>
+      <View style={globalStyles.footer}>
         <Navbar navigation={navigation} />
       </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    // justifyContent: "flex-start",
-    alignItems: "center",
-    // width: 430,
-  },
-  content: {
-    flex: 1,
-    // width: 430,
-    paddingTop: 70,
-    // alignItems: "center",
-    justifyContent: "center",
-  },
-  footer: {
-    flex: 1,
-    // width: 430,
-    // alignItems: "center",
-    justifyContent: "flex-end",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-})
 
 export default HumidDisplay

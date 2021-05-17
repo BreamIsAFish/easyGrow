@@ -1,11 +1,12 @@
 import React, { FC, useState, useEffect } from "react"
-import { Text, View, StyleSheet, TouchableOpacity, Switch } from "react-native"
+import { Text, View, Switch } from "react-native"
 import { Card } from "react-native-elements"
 import Icon from "react-native-vector-icons/Ionicons"
 import { netpie } from "../axiosConfig"
 import Header from "./header"
 import Navbar from "./navbar"
-import ReadData, { Toggle, Devices, Props } from "../interfaces/readInterface"
+import ReadData, { Toggle, Props } from "../interfaces/readInterface"
+import { globalStyles } from "../styles/globalStyles"
 
 const LightDisplay: FC<Props> = ({ navigation }) => {
   // sensor values //
@@ -55,22 +56,22 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
 
   return (
     // <View style={styles.icon}>
-    <View style={styles.header}>
+    <View style={globalStyles.header}>
       <Header title={"Light"} />
-      <View style={styles.content}>
-        <Card>
+      <View style={globalStyles.content}>
+        <Card containerStyle={[globalStyles.outterCard, { borderColor: "#FFC700" }]}>
           <View>
-            <Text style={{ fontSize: 18 }}>Light Intensity</Text>
+            <Text style={[globalStyles.cardTitle, { color: "#FFC700" }]}>Light Intensity</Text>
           </View>
-          <Card>
-            <View style={styles.row}>
-              <Icon name="sunny-outline" size={200} />
+          <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700", backgroundColor: "rgba(255, 199, 0, 0.08)" }]}>
+            <View style={globalStyles.row}>
+              <Icon name="sunny-outline" size={200} color="#FFC700" />
             </View>
           </Card>
-          <View style={styles.row}>
-            <Text style={{ fontSize: 54 }}>{`${light} %`}</Text>
-            <Card>
-              <Text>Auto Watering</Text>
+          <View style={globalStyles.row}>
+            <Text style={[globalStyles.valueText, { color: "#FFC700" }]}>{`${light} %`}</Text>
+            <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700" }]}>
+              <Text style={[globalStyles.normalText, { color: "#FFC700" }]}>Auto Lighting</Text>
               <Switch
                 onValueChange={() => {
                   sendData()
@@ -81,38 +82,11 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
           </View>
         </Card>
       </View>
-      <View style={styles.footer}>
+      <View style={globalStyles.footer}>
         <Navbar navigation={navigation} />
       </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    // justifyContent: "flex-start",
-    alignItems: "center",
-    // width: 430,
-  },
-  content: {
-    flex: 1,
-    // width: 430,
-    paddingTop: 70,
-    // alignItems: "center",
-    justifyContent: "center",
-  },
-  footer: {
-    flex: 1,
-    // width: 430,
-    // alignItems: "center",
-    justifyContent: "flex-end",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-})
 
 export default LightDisplay

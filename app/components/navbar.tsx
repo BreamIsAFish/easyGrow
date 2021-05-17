@@ -9,7 +9,7 @@ const Navbar: FC<Props> = ({ navigation }) => {
     { key: 2, name: "Soil Hu", icon: "water", link: "HumidDisplay" },
     { key: 3, name: "Home", icon: "leaf-outline", link: "Home" },
     { key: 4, name: "Light", icon: "sunny", link: "LightDisplay" },
-    { key: 5, name: "Help", icon: "information-circle", link: "HumidDisplay" },
+    { key: 5, name: "Help", icon: "information-circle", link: "Help" },
   ]
 
   // redirect //
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
   },
   text: {
+    fontFamily: "BalooBhai2-Regular",
     fontSize: 16,
     color: "grey",
   },

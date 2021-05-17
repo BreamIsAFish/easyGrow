@@ -9,6 +9,7 @@ const getFonts = async () => {
   await loadAsync({
     "BalooBhai2-Regular": require("./assets/fonts/BalooBhai2-Regular.ttf"),
     "BalooBhai2-Bold": require("./assets/fonts/BalooBhai2-Bold.ttf"),
+    "BalooBhai2-SemiBold": require("./assets/fonts/BalooBhai2-SemiBold.ttf"),
   })
 }
 
