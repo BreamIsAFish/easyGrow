@@ -23,8 +23,8 @@ const Navbar: FC<Props> = ({ navigation }) => {
         return (
           <TouchableOpacity onPress={() => redirect(item.link)} key={item.key}>
             <View style={styles.icon}>
-              <Icon name={item.icon} size={32} color="grey" />
-              <Text style={styles.text}>{item.name}</Text>
+              <Icon name={item.icon} size={32} color={item.name === "Home" ? "#01B636" : "grey"} />
+              <Text style={[styles.text, { color: item.name === "Home" ? "#01B636" : "grey" }]}>{item.name}</Text>
             </View>
           </TouchableOpacity>
         )

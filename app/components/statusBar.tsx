@@ -1,9 +1,8 @@
-import React, { FC, useState, useEffect } from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import React, { FC, useState } from "react"
+import { StyleSheet, Text, View } from "react-native"
 import { Card } from "react-native-elements"
 import Icon from "react-native-vector-icons/Ionicons"
 import { StatusType } from "../interfaces/readInterface"
-import { globalStyles } from "../styles/globalStyles"
 
 const StatusBar: FC<{ type: StatusType; value: number }> = ({ type, value }) => {
   const [icon] = useState<string>(type === "Humid" ? "water-outline" : type === "Light" ? "sunny-outline" : "thermometer-outline")
@@ -13,16 +12,21 @@ const StatusBar: FC<{ type: StatusType; value: number }> = ({ type, value }) => 
     Temperature: "Temperature",
     Light: "Light Level",
   }
+  const color = {
+    Humid: "#4ED4FF",
+    Temperature: "#01B636",
+    Light: "#FFC700",
+  }
 
   return (
-    <Card containerStyle={styles.root}>
+    <Card containerStyle={[styles.root, { borderColor: color[type] }]}>
       <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-        <Card containerStyle={styles.iconCard}>
-          <Icon name={icon} size={54} />
+        <Card containerStyle={[styles.iconCard, { borderColor: color[type] }]}>
+          <Icon name={icon} size={54} color={color[type]} />
         </Card>
         <View style={styles.textField}>
-          <Text style={{ fontFamily: "BalooBhai2-SemiBold", fontSize: 18, marginTop: 20 }}>{label[type]}</Text>
-          <Text style={styles.valueText}>{`${value} ${valueSymbol}`}</Text>
+          <Text style={[styles.labelText, { color: color[type] }]}>{label[type]}</Text>
+          <Text style={[styles.valueText, { color: color[type] }]}>{`${value} ${valueSymbol}`}</Text>
         </View>
       </View>
     </Card>
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     paddingTop: 0,
     paddingBottom: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 16,
     width: 400,
     justifyContent: "center",
@@ -60,6 +64,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     padding: 0,
     margin: 0,
+  },
+  labelText: {
+    fontFamily: "BalooBhai2-SemiBold",
+    fontSize: 18,
+    marginTop: 20,
   },
 })
 
