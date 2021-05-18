@@ -25,6 +25,7 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
         setLamp(data.data.lamp)
       })
       .catch((response) => {
+        console.error("Unable to connect to netpie")
         console.log(response)
       })
   }
@@ -45,6 +46,7 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
         setLamp(value)
       })
       .catch((response) => {
+        console.error("Unable to connect to netpie")
         console.log(response)
       })
   }
@@ -55,29 +57,24 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
   }, [light, lamp])
 
   return (
-    // <View style={styles.icon}>
     <View style={globalStyles.header}>
       <Header title={"Light"} />
       <View style={globalStyles.content}>
         <Card containerStyle={[globalStyles.outterCard, { borderColor: "#FFC700" }]}>
-          <View>
-            <Text style={[globalStyles.cardTitle, { color: "#FFC700" }]}>Light Intensity</Text>
-          </View>
+          <Text style={[globalStyles.cardTitle, { color: "#FFC700" }]}>Light Intensity</Text>
           <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700", backgroundColor: "rgba(255, 199, 0, 0.08)" }]}>
-            <View style={globalStyles.row}>
-              <Icon name="sunny-outline" size={200} color="#FFC700" />
-            </View>
+            <Icon name="sunny-outline" size={200} color="#FFC700" />
           </Card>
           <View style={globalStyles.row}>
             <Text style={[globalStyles.valueText, { color: "#FFC700" }]}>{`${light} %`}</Text>
             <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700" }]}>
-              <Text style={[globalStyles.normalText, { color: "#FFC700" }]}>Auto Lighting</Text>
               <Switch
-                onValueChange={() => {
+                onValueChange={(value) => {
                   sendData()
                 }}
                 value={lamp === "on"}
               />
+              <Text style={[globalStyles.normalText, { color: "#FFC700" }]}>Auto Lighting</Text>
             </Card>
           </View>
         </Card>

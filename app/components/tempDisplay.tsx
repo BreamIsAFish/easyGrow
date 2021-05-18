@@ -21,6 +21,7 @@ const TempDisplay: FC<Props> = ({ navigation }) => {
         setTemp(data.data.temperature)
       })
       .catch((response) => {
+        console.error("Unable to connect to netpie")
         console.log(response)
       })
   }
@@ -35,19 +36,15 @@ const TempDisplay: FC<Props> = ({ navigation }) => {
     <View style={globalStyles.header}>
       <Header title={"Temperature"} />
       <View style={globalStyles.content}>
-        <Card containerStyle={[globalStyles.outterCard, { borderColor: "#639EF6" }]}>
-          <View>
-            <Text style={[globalStyles.cardTitle, { color: "#639EF6" }]}>Temperature</Text>
-          </View>
-          <Card containerStyle={[globalStyles.innerCard, { borderColor: "#639EF6", backgroundColor: "rgba(99, 158, 246, 0.08)" }]}>
-            <View style={globalStyles.row}>
-              <Icon name="snow" size={200} color="#639EF6" />
-            </View>
-            <View style={{ alignItems: "flex-end" }}>
-              <Icon name="thermometer-outline" size={32} color="#639EF6" />
-            </View>
+        <Card containerStyle={[globalStyles.outterCard, { borderColor: "#01B636" }]}>
+          <Text style={[globalStyles.cardTitle, { color: "#01B636" }]}>Temperature</Text>
+          <Card containerStyle={[globalStyles.innerCard, { borderColor: "#01B636", backgroundColor: "rgba(1, 182, 54, 0.08)" }]}>
+            <Icon name="thermometer-outline" size={200} color="#01B636" />
+            {/* <View style={{ alignItems: "flex-end" }}>
+              <Icon name="thermometer-outline" size={32} color="#01B636" />
+            </View> */}
           </Card>
-          <Text style={[globalStyles.valueText, { color: "#639EF6" }]}>{`${temp} °C`}</Text>
+          <Text style={[globalStyles.valueText, { color: "#01B636" }]}>{`${temp} °C`}</Text>
         </Card>
       </View>
       <View style={globalStyles.footer}>
