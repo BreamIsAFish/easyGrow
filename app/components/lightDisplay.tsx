@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react"
-import { Text, View, Switch } from "react-native"
+import { Text, View, Switch, TouchableOpacity } from "react-native"
 import { Card } from "react-native-elements"
 import Icon from "react-native-vector-icons/Ionicons"
 import { netpie } from "../axiosConfig"
@@ -62,12 +62,18 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
       <View style={globalStyles.content}>
         <Card containerStyle={[globalStyles.outterCard, { borderColor: "#FFC700" }]}>
           <Text style={[globalStyles.cardTitle, { color: "#FFC700" }]}>Light Intensity</Text>
-          <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700", backgroundColor: "rgba(255, 199, 0, 0.08)" }]}>
-            <Icon name="sunny-outline" size={200} color="#FFC700" />
-          </Card>
-          <View style={globalStyles.row}>
-            <Text style={[globalStyles.valueText, { color: "#FFC700" }]}>{`${light} %`}</Text>
-            <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700" }]}>
+          <TouchableOpacity
+            onPress={() => {
+              sendData()
+            }}
+          >
+            <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700", backgroundColor: "rgba(255, 199, 0, 0.08)" }]}>
+              <Icon name="sunny-outline" size={200} color="#FFC700" />
+            </Card>
+          </TouchableOpacity>
+          {/* <View style={globalStyles.row}> */}
+          <Text style={[globalStyles.valueText, { color: "#FFC700" }]}>{`${light} %`}</Text>
+          {/* <Card containerStyle={[globalStyles.innerCard, { borderColor: "#FFC700" }]}>
               <Switch
                 onValueChange={(value) => {
                   sendData()
@@ -75,8 +81,8 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
                 value={lamp === "on"}
               />
               <Text style={[globalStyles.normalText, { color: "#FFC700" }]}>Auto Lighting</Text>
-            </Card>
-          </View>
+            </Card> */}
+          {/* </View> */}
         </Card>
       </View>
       <View style={globalStyles.footer}>
