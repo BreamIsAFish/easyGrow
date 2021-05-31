@@ -5,7 +5,7 @@ import ReadData, { RootStackParamList } from "../interfaces/readInterface"
 import Navbar from "./navbar"
 import Header from "./header"
 import StatusBar from "./statusBar"
-import { Props, NavProps } from "../interfaces/readInterface"
+import { Props } from "../interfaces/readInterface"
 import { globalStyles } from "../styles/globalStyles"
 
 // export default function Home() {
@@ -15,17 +15,17 @@ const Home: FC<Props> = ({ navigation }) => {
   const [light, setLight] = useState<number>(1)
   const [temperature, setTemperature] = useState<number>(1)
   // page state //
-  // const [refresh, setRefresh] = useState<boolean>(false)
+  const [refresh, setRefresh] = useState<boolean>(false)
 
   // useEffect //
   const fetchData = () => {
     netpie
       .get<ReadData>(`/shadow/data`)
       .then(({ data }) => {
-        // setRefresh(false)
+        setRefresh(false)
         // sensors //
-        setHumid(data.data.humid)
-        setLight(data.data.light)
+        setHumid(Math.min(data.data.humid, 100))
+        setLight(Math.min(data.data.light, 100))
         setTemperature(data.data.temperature)
       })
       .catch((response) => {
@@ -35,7 +35,14 @@ const Home: FC<Props> = ({ navigation }) => {
 
   useEffect(() => {
     fetchData()
-  }, [humid, light, temperature])
+  }, [])
+
+  useEffect(() => {
+    if (refresh) {
+      fetchData()
+      console.log("refreshed")
+    }
+  }, [refresh])
 
   // redirect //
   const redirect = (page: keyof RootStackParamList) => {
@@ -44,7 +51,7 @@ const Home: FC<Props> = ({ navigation }) => {
 
   return (
     <View style={globalStyles.header}>
-      <Header title={"EasyGrow"} />
+      <Header title={"EasyGrow"} setRefresh={setRefresh} />
       <View style={globalStyles.content}>
         <TouchableOpacity
           onPress={() => {

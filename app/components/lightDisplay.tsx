@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react"
-import { Text, View, Switch, TouchableOpacity } from "react-native"
+import { Text, View, TouchableOpacity } from "react-native"
 import { Card } from "react-native-elements"
 import Icon from "react-native-vector-icons/Ionicons"
 import { netpie } from "../axiosConfig"
@@ -13,14 +13,17 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
   const [light, setLight] = useState<number>(1)
   // on & off //
   const [lamp, setLamp] = useState<Toggle>("off")
+  // page state
+  const [refresh, setRefresh] = useState<boolean>(false)
 
   // Axios //
   const fetchData = () => {
     netpie
       .get<ReadData>(`/shadow/data`)
       .then(({ data }) => {
+        setRefresh(false)
         // sensors //
-        setLight(data.data.light)
+        setLight(Math.min(data.data.light, 100))
         // on & off //
         setLamp(data.data.lamp)
       })
@@ -54,11 +57,15 @@ const LightDisplay: FC<Props> = ({ navigation }) => {
   // useEffect //
   useEffect(() => {
     fetchData()
-  }, [light, lamp])
+  }, [])
+
+  useEffect(() => {
+    if (refresh) fetchData()
+  }, [refresh])
 
   return (
     <View style={globalStyles.header}>
-      <Header title={"Light"} />
+      <Header title={"Light"} setRefresh={setRefresh} />
       <View style={globalStyles.content}>
         <Card containerStyle={[globalStyles.outterCard, { borderColor: "#FFC700" }]}>
           <Text style={[globalStyles.cardTitle, { color: "#FFC700" }]}>Light Intensity</Text>
