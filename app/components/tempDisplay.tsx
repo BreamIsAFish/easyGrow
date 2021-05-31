@@ -11,12 +11,15 @@ import { globalStyles } from "../styles/globalStyles"
 const TempDisplay: FC<Props> = ({ navigation }) => {
   // sensor values //
   const [temp, setTemp] = useState<number>(1)
+  // page state
+  const [refresh, setRefresh] = useState<boolean>(false)
 
   // Axios //
   const fetchData = () => {
     netpie
       .get<ReadData>(`/shadow/data`)
       .then(({ data }) => {
+        setRefresh(false)
         // sensors //
         setTemp(data.data.temperature)
       })
@@ -29,12 +32,16 @@ const TempDisplay: FC<Props> = ({ navigation }) => {
   // useEffect //
   useEffect(() => {
     fetchData()
-  }, [temp])
+  }, [])
+
+  useEffect(() => {
+    if (refresh) fetchData()
+  }, [refresh])
 
   return (
     // <View style={styles.icon}>
     <View style={globalStyles.header}>
-      <Header title={"Temperature"} />
+      <Header title={"Temperature"} setRefresh={setRefresh} />
       <View style={globalStyles.content}>
         <Card containerStyle={[globalStyles.outterCard, { borderColor: "#01B636" }]}>
           <Text style={[globalStyles.cardTitle, { color: "#01B636" }]}>Temperature</Text>

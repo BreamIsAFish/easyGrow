@@ -14,14 +14,17 @@ const HumidDisplay: FC<Props> = ({ navigation }) => {
   // on & off //
   const [pump, setPump] = useState<Toggle>("off")
   const [autoPump, setAutoPump] = useState<Toggle>("off")
+  // page state
+  const [refresh, setRefresh] = useState<boolean>(false)
 
   // Axios //
   const fetchData = () => {
     netpie
       .get<ReadData>(`/shadow/data`)
       .then(({ data }) => {
+        setRefresh(false)
         // sensors //
-        setHumid(data.data.humid)
+        setHumid(Math.min(data.data.humid, 100))
         // on & off //
         setPump(data.data.pump)
         setAutoPump(data.data.autoPump)
@@ -59,11 +62,15 @@ const HumidDisplay: FC<Props> = ({ navigation }) => {
   // useEffect //
   useEffect(() => {
     fetchData()
-  }, [humid, pump, autoPump])
+  }, [])
+
+  useEffect(() => {
+    if (refresh) fetchData()
+  }, [refresh])
 
   return (
     <View style={globalStyles.header}>
-      <Header title={"Soil Humid"} />
+      <Header title={"Soil Humid"} setRefresh={setRefresh} />
       <View style={globalStyles.content}>
         <Card containerStyle={[globalStyles.outterCard, { borderColor: "#4ED4FF" }]}>
           <Text style={[globalStyles.cardTitle, { color: "#4ED4FF" }]}>Press to water your plant</Text>
